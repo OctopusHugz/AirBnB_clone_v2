@@ -33,6 +33,6 @@ def do_deploy(archive_path):
         cmd_string7 = "ln -s " + frp + " /data/web_static/current"
         run(cmd_string7)
         # reboot(1)
-        return True
     except:
         return False
+    return True
