@@ -7,9 +7,9 @@ from fabric.operations import put, run
 @hosts(['35.231.246.19', '34.227.48.93'])
 def do_deploy(archive_path):
     """This function distributes an archive to web servers"""
+    if not path.exists(archive_path):
+        return False
     try:
-        if not path.exists(archive_path):
-            return False
         archive_name = archive_path[9:]
         dest_path = "/tmp/" + archive_name
         filename = archive_name[:-4] + "/"
