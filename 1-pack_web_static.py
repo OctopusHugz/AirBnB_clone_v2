@@ -9,7 +9,10 @@ def do_pack():
     archive"""
     try:
         now = datetime.now()
-        now_date = str(now.year) + str(now.month) + str(now.day)\
+        month = now.month
+        if month < 10:
+            month = "0" + str(month)
+        now_date = str(now.year) + month + str(now.day)\
             + str(now.hour) + str(now.minute) + str(now.second) + ".tgz"
         archive_name = "web_static_" + now_date
         if not path.exists("versions/"):
