@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 from os import path
-from fabric.decorators import hosts
 from fabric.operations import put, run
+from fabric.state import env
 
 
-@hosts(['35.231.246.19', '34.227.48.93'])
 def do_deploy(archive_path):
     """This function distributes an archive to web servers"""
+    env.hosts = ['35.231.246.19', '34.227.48.93']
+    # env.user = "ubuntu"
+    # env.key_filename = "~/.ssh/holberton"
     if not path.exists(archive_path):
         return False
     try:
@@ -30,6 +32,7 @@ def do_deploy(archive_path):
         run(cmd_string6)
         cmd_string7 = "ln -s " + frp + " /data/web_static/current"
         run(cmd_string7)
+        # reboot(1)
         return True
     except:
         return False
