@@ -10,7 +10,7 @@ deploy_module = __import__("2-do_deploy_web_static")
 def do_clean(number=0):
     """This function deletes out-of-date archives"""
     if number in [0, 1]:
-        run("ls -1t | awk 'NR > 1' | xargs rm")
+        run("ls -1t versions | awk 'NR > 1' | xargs rm")
     else:
-        cmd_string = "ls -1t | awk 'NR > " + number + "' | xargs rm"
+        cmd_string = "ls -1t versions | awk 'NR > " + number + "' | xargs rm"
         run(cmd_string)
