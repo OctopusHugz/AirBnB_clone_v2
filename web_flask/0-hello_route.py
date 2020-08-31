@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 @app.route('/', strict_slashes=False)
 def index():
+    """This function returns a string when accessing the root index"""
     return "Hello HBNB!"
 
 if __name__ == "__main__":
