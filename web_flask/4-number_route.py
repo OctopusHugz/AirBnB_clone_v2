@@ -30,21 +30,10 @@ def python_text(text):
     return "Python {}".format(text.replace("_", " "))
 
 
-@app.route('/number/<n>', strict_slashes=False)
+@app.route('/number/<int:n>', strict_slashes=False)
 def number(n):
     """This function returns a string when accessing the /number/ route"""
-    for chars in n:
-        print(chars)
-        if chars is not '.' and int(chars) >= 0 and int(chars) <= 9:
-            pass
-        else:
-            return "Not a number!"
     return "{} is a number".format(n)
-    #if isinstance(n, int):
-    # if type(n) is int:
-    #    return "{} is a number".format(n)
-    #else:
-    #    return str(type(n))
 
 
 if __name__ == "__main__":
