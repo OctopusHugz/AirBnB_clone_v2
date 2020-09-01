@@ -37,7 +37,10 @@ class DBStorage():
                 if classes != "BaseModel":
                     objs.extend(self.__session.query(eval(classes)).all())
         else:
-            class_name = eval(cls)
+            if type(cls) is str:
+                class_name = eval(cls)
+            else:
+                class_name = eval(cls().__class__.__name__)
             objs = self.__session.query(class_name).all()
         new_dict = {}
         for obj in objs:
@@ -56,8 +59,6 @@ class DBStorage():
     def delete(self, obj=None):
         """Deletes the object from the current database session"""
         if obj is not None:
-            # print(type(eval(obj.__class__.__name__)))
-            # self.__session.query(obj).delete()
             cname = eval(obj.__class__.__name__)
             self.__session.query(cname).filter(cname.id == obj.id).delete()
 
