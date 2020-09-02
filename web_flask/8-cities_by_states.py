@@ -4,13 +4,19 @@ from flask import Flask, render_template
 from models import storage
 from models.state import State
 from models.city import City
+from os import getenv
 app = Flask(__name__)
 
 
 @app.route('/cities_by_states', strict_slashes=False)
-def states_list():
+def cities_by_states():
     """This function returns HTML when accessing the /cities_by_states route"""
     states = storage.all(State).values()
+    for state in states:
+        if getenv('HBNB_TYPE_STORAGE') != 'db':
+            cities = storage.all(City).values()
+        else:
+            cities = state.cities
     return render_template('8-cities_by_states.html', states=states)
 
 
