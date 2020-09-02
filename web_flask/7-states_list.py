@@ -7,17 +7,17 @@ app = Flask(__name__)
 
 
 @app.route('/states_list', strict_slashes=False)
-def states_list(states):
+def states_list():
     """This function returns HTML when accessing the /states_list route"""
-    states = storage.all(State)
+    states = storage.all(State).values()
     return render_template('7-states_list.html', states=states)
 
 
 @app.teardown_appcontext
-def teardown():
+def closing_time(self):
     """This function tears down and closes session"""
     storage.close()
-    
+
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", debug=True)
