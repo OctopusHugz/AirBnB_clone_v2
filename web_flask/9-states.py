@@ -23,16 +23,16 @@ def states_id(id):
     my_state = ""
     states = storage.all(State).values()
     for state in states:
-        if getenv('HBNB_TYPE_STORAGE') == 'db':
-            cities = state.cities
-        else:
-            cities = storage.all(City).values()
+        # if getenv('HBNB_TYPE_STORAGE') == 'db':
+        #     cities = state.cities
+        # else:
+        #     cities = storage.all(City).values()
         if state.id == id:
             my_state = state
             new_list.append(state)
             id_list.append(state.id)
     return render_template('9-states.html', states=new_list, state=my_state,
-                           id=id, id_list=id_list)
+                           id_list=id_list)
 
 
 @app.teardown_appcontext
