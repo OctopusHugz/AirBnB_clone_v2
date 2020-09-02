@@ -16,15 +16,23 @@ def states():
 
 
 @app.route('/states/<id>', strict_slashes=False)
-def states_id(id=None):
+def states_id(id):
     """This function returns HTML when accessing the /states/id route"""
+    new_list = []
+    id_list = []
+    my_state = ""
     states = storage.all(State).values()
     for state in states:
         if getenv('HBNB_TYPE_STORAGE') == 'db':
             cities = state.cities
         else:
             cities = storage.all(City).values()
-    return render_template('9-states.html', states=states, id=id)
+        if state.id == id:
+            my_state = state
+            new_list.append(state)
+            id_list.append(state.id)
+    return render_template('9-states.html', states=new_list, state=my_state,
+                           id=id, id_list=id_list)
 
 
 @app.teardown_appcontext
