@@ -7,6 +7,16 @@
 	border-radius: 4px;
 }
 
+.filter_amenities {
+	display: inline;
+	vertical-align: middle;
+	float: left;
+	height: 100%;
+	width: 25%;
+
+	line-height: 20px;
+}
+
 .locations {
 	display: inline;
 	vertical-align: middle;
@@ -18,15 +28,6 @@
 	border-right: 1px solid #DDDDDD;
 }
 
-.filter_amenities {
-	display: inline;
-	vertical-align: middle;
-	height: 100%;
-	float: left;
-    width: 25%;
-
-	line-height: 20px;
-}
 
 .popover {
 	list-style-type: none;
