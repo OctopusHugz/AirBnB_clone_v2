@@ -29,16 +29,17 @@ article {
 	flex-direction: row;
 	position: relative;
 
-	height: 80px;	
+	height: 80px;
 	width: 100%;
 }
 
 .price_by_night {
 	display: flex;
 	justify-content: center;
-	align-self: flex-end;
+	align-self: center;
 
-	position: absolute;
+	/* position: absolute; */
+	text-align: left;
 	right: 0;
 
 	line-height: 60px;
@@ -74,7 +75,7 @@ article {
 
 .user {
 	margin-top: 5px;
-	margin-bottom: 5px;	
+	margin-bottom: 5px;
 }
 
 .description {
@@ -123,4 +124,12 @@ article h2 {
 	background-position: center;
     width: 50px;
     height: 50px;
+}
+
+.fader {
+	z-index: -1;
+}
+
+.place_name {
+	text-align: left;
 }
