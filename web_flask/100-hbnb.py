@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route('/hbnb', strict_slashes=False)
 def hbnb_alive():
-    """This function returns HTML when accessing the /hbnb_filters route"""
+    """This function returns HTML when accessing the /hbnb route"""
     states = storage.all(State).values()
     amenities = storage.all(Amenity).values()
     places = storage.all(Place).values()
